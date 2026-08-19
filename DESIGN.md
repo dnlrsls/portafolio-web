@@ -248,6 +248,9 @@ Pacing deliberately changes:
   remaining viewport; at and below 980px, the flow remains content-driven while navigation
   is hidden and identity and preferences remain. Its quiet theme-aware canvas surface has
   no blur, shadow, gradient, scroll-state behavior, or motion.
+- At and below 640px, mobile keeps the 14px page gutter and a compact 72px/48px
+  showcase-header rhythm, 56px record insets, 80px section starts, and 80px/72px contact
+  close. The hierarchy stays generous while avoiding repeated 64–104px interior gaps.
 - The hero is the densest composition: readable name, copy, actions, smaller transparent portrait, and proof occupy one frame in the first desktop viewport.
 - Selected work appears first as a `100svh` desktop stage containing a centered `80svh`
   shared frame at the hero's 1128px visual width. Its bilingual introduction uses approximately 30% of the section height;
@@ -278,7 +281,7 @@ their own container rather than expanding the document.
 
 - Primary external actions in selected work and open source share an unfilled bracket, run,
   and arrow grammar with native link semantics and at least 44px targets; language controls
-  retain native buttons.
+  retain native buttons. Hero links retain the same 44px minimum at mobile widths.
 - Keyboard focus uses a three-pixel muted-neutral outline with four-pixel offset.
 - Desktop full-viewport stages use zero document scroll padding because their internal
   header-band reservation keeps centered compositions below the fixed header. At and below
