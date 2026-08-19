@@ -260,9 +260,12 @@ Pacing deliberately changes:
   Its bilingual introduction uses the same neutral header system before equal-width Gentle AI
   and Engram columns with body content, a centered responsive ASCII figure in the flexible
   middle area, and bottom-aligned repository actions. Wide grids switch to compact grids at
-  640px; the 38-row Gentle AI grid has stable 4.6px/4.7px wide line metrics for a 178.6px
-  text height (194.6px including the figure's vertical padding), while its 24-row compact grid uses 5.2px/6px metrics. Local clipping
-  protects the card and document widths without altering the character aspect ratio. At and below 980px, the frame and
+  640px; all four showcase figures use exact 80×35 wide and 50×22 compact grids with shared 4.9px/5.3px
+  wide and 5.2px/6.2px compact character metrics. Above 980px wide and at or below 800px tall,
+  a proportional laptop tier uses a 140px header row, tighter frame padding, and 4.4px/4.5px
+  wide art metrics so complete source-derived figures, bilingual copy, and bottom-aligned
+  actions fit without changing the 80svh frame or the tighter 720px header row. Local clipping
+  protects decorative rails and document widths without altering the character aspect ratio. At and below 980px, the frame and
   tool articles become content-driven and stack in source order.
 - Services form a vertical ASCII branch diagram in a `100svh` desktop outer stage only.
 - Contact closes with direct copy, email, and bracketed links in a `100svh` desktop outer stage only.
