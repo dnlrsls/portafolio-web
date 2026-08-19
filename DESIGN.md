@@ -23,8 +23,8 @@ colors:
   light-flow-structural: "#59616D"
   gentle-ai-art: "#FF4F97"
   engram-art: "#FF63C2"
-  light-gentle-ai-art: "#A31359"
-  light-engram-art: "#8D1A63"
+  light-gentle-ai-art: "#82003E"
+  light-engram-art: "#700051"
 typography:
   display:
     fontFamily: "Doto Variable, sans-serif"
@@ -37,6 +37,11 @@ typography:
     fontSize: "clamp(7px, 0.78vw, 11px)"
     fontWeight: 400
     lineHeight: 1.1
+  tool-art:
+    fontFamily: "Fragment Mono, Lucida Console, monospace"
+    fontWeight:
+      dark: 400
+      light: 600
   body:
     fontFamily: "Fragment Mono, Lucida Console, monospace"
     fontSize: "15px"
@@ -174,8 +179,8 @@ rather than hue.
 - **Strong rule `#585F6A`:** stronger structural separation.
 - **Portrait `#0B0D10`, `#23272E`, and `#404752`:** high-contrast primary, secondary, and depth marks for the small antialiased portrait glyphs.
 - **Moving characters `#252A31`, `#343B45`, and `#59616D`:** primary, secondary, and structural glyph roles remain distinct at restrained opacity.
-- **Gentle AI art `#A31359`:** deeper rose-magenta used only for its source-derived rose ASCII figure.
-- **Engram art `#8D1A63`:** brighter electric pink used only for its source-derived elephant ASCII figure.
+- **Gentle AI art `#82003E`:** deep rose-magenta used only for its source-derived rose ASCII figure.
+- **Engram art `#700051`:** deep violet-magenta used only for its source-derived elephant ASCII figure.
 
 ## Typography
 
@@ -246,7 +251,10 @@ grids and the same figure geometry, centered alignment, overflow behavior, and 4
 wide and 5.2px/6.2px compact character metrics. The art is a localized semantic figure with
 its character grid hidden from assistive technology.
 Their modifier classes alone remap the figures to theme-aware source-faithful magenta
-tokens; Grupo AMSA and Jireh VYP retain the neutral ASCII identity color.
+tokens. Gentle AI and Engram use Fragment Mono at weight 400 in the dark theme and
+600 in the light theme so their tiny daylight strokes remain legible without changing
+their character grids or geometry. Grupo AMSA and Jireh VYP retain the neutral ASCII
+identity color and weight 400 in both themes.
 
 ASCII carries hierarchy, never fake system state. Brackets clarify controls; arrows
 clarify link direction; rails group factual records. Decorative

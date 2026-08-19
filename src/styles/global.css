@@ -20,6 +20,7 @@
   --portrait-weight: 400;
   --tool-gentle-ai: #ff4f97;
   --tool-engram: #ff63c2;
+  --tool-art-weight: 400;
   --site-header-height: 76px;
   --anchor-clearance: 12px;
   --content: min(1240px, calc(100vw - 48px));
@@ -48,8 +49,9 @@ html[data-theme='light'] {
   --portrait-secondary: #23272e;
   --portrait-depth: #404752;
   --portrait-weight: 600;
-  --tool-gentle-ai: #97004c;
-  --tool-engram: #850060;
+  --tool-gentle-ai: #82003e;
+  --tool-engram: #700051;
+  --tool-art-weight: 600;
 }
 
 * {
@@ -1030,6 +1032,11 @@ html[data-theme='light'] .wireportrait__fallback {
 
 .showcase-ascii-art--engram {
   color: var(--tool-engram);
+}
+
+.showcase-ascii-art--gentle-ai pre,
+.showcase-ascii-art--engram pre {
+  font-weight: var(--tool-art-weight);
 }
 
 @media (min-width: 981px) and (max-height: 800px) {
