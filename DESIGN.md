@@ -18,6 +18,10 @@ colors:
   light-flow-primary: "#252A31"
   light-flow-secondary: "#343B45"
   light-flow-structural: "#59616D"
+  gentle-ai-art: "#FF4F97"
+  engram-art: "#FF63C2"
+  light-gentle-ai-art: "#A31359"
+  light-engram-art: "#8D1A63"
 typography:
   display:
     fontFamily: "Doto Variable, sans-serif"
@@ -147,11 +151,14 @@ The palette uses stable semantic roles rather than mechanical inversion.
 - **Secondary text `#C8C4BA`:** identity, selection, and supporting emphasis.
 - **Muted text `#AAA69D`:** readable prose, metadata, motion, and focus outlines.
 - **Rule `#3D3C38`:** structural frames, rails, and separators.
+- **Gentle AI art `#FF4F97`:** deeper rose-magenta used only for its source-derived rose ASCII figure.
+- **Engram art `#FF63C2`:** brighter electric pink used only for its source-derived elephant ASCII figure.
 
-The darker neutral `#5F5D58` is reserved for subtle structural depth. No saturated
-accent palette, terminal signaling, gradient text, glow, glass, scan lines, static,
-noise, or rainbow treatment belongs in this system. Hierarchy comes from stable
-monochrome roles, type, spacing, and structure rather than hue.
+The darker neutral `#5F5D58` is reserved for subtle structural depth. These two
+source-faithful tool-art accents are isolated from the neutral system; no terminal
+signaling, gradient text, glow, glass, scan lines, static, noise, or rainbow treatment
+belongs in this system. Hierarchy comes from neutral roles, type, spacing, and structure
+rather than hue.
 
 ### Light
 
@@ -163,6 +170,8 @@ monochrome roles, type, spacing, and structure rather than hue.
 - **Rule `#75818E`:** visible structural frames, rails, and separators.
 - **Strong rule `#585F6A`:** portrait depth and stronger structural separation.
 - **Moving characters `#252A31`, `#343B45`, and `#59616D`:** primary, secondary, and structural glyph roles remain distinct at restrained opacity.
+- **Gentle AI art `#A31359`:** deeper rose-magenta used only for its source-derived rose ASCII figure.
+- **Engram art `#8D1A63`:** brighter electric pink used only for its source-derived elephant ASCII figure.
 
 ## Typography
 
@@ -230,6 +239,8 @@ AI uses the bloom-only crop `(left: 280, top: 70, width: 700, height: 580)`; Eng
 grids and the same figure geometry, centered alignment, overflow behavior, and 4.9px/5.3px
 wide and 5.2px/6.2px compact character metrics. The art is a localized semantic figure with
 its character grid hidden from assistive technology.
+Their modifier classes alone remap the figures to theme-aware source-faithful magenta
+tokens; Grupo AMSA and Jireh VYP retain the neutral ASCII identity color.
 
 ASCII carries hierarchy, never fake system state. Brackets clarify controls; arrows
 clarify link direction; rails group factual records. Decorative

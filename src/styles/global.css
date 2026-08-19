@@ -17,6 +17,8 @@
   --portrait-primary: #f1eee6;
   --portrait-secondary: #aaa69d;
   --portrait-depth: #5f5d58;
+  --tool-gentle-ai: #ff4f97;
+  --tool-engram: #ff63c2;
   --site-header-height: 76px;
   --anchor-clearance: 12px;
   --content: min(1240px, calc(100vw - 48px));
@@ -44,6 +46,8 @@ html[data-theme='light'] {
   --portrait-primary: #121418;
   --portrait-secondary: #2e333c;
   --portrait-depth: #585f6a;
+  --tool-gentle-ai: #a31359;
+  --tool-engram: #8d1a63;
 }
 
 * {
@@ -1011,6 +1015,14 @@ footer {
 
 .showcase-ascii-art__compact {
   display: none;
+}
+
+.showcase-ascii-art--gentle-ai {
+  color: var(--tool-gentle-ai);
+}
+
+.showcase-ascii-art--engram {
+  color: var(--tool-engram);
 }
 
 @media (min-width: 981px) and (max-height: 800px) {
