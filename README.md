@@ -48,6 +48,20 @@ SITE_URL=https://dnlrsls.github.io
 BASE_PATH=/portafolio-web
 ```
 
+## Production SEO
+
+Production builds generate a base-prefixed sitemap index at
+`https://dnlrsls.github.io/portafolio-web/sitemap-index.xml`. The page metadata uses
+an absolute canonical URL and 1200 × 630 social card; `robots.txt` and the document
+head both advertise the sitemap index.
+
+### Owner action: Google Search Console
+
+The repository owner must add and verify the GitHub Pages property
+`https://dnlrsls.github.io/portafolio-web/` in Google Search Console, then submit the
+sitemap index URL above. This manual Search Console step has not been completed by
+this project.
+
 ## Typography
 
 Doto Variable and Fragment Mono are bundled locally through Fontsource. Both are

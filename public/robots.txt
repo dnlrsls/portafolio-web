@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://dnlrsls.github.io/portafolio-web/sitemap-index.xml

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Daniel Rosales portfolio social card</title>
+  <desc id="description">Daniel Rosales, Freelance Product Engineer and Open-Source Contributor.</desc>
+  <rect width="1200" height="630" fill="#0C0C0B"/>
+  <g fill="none" stroke="#3D3C38" stroke-width="2">
+    <path d="M72 72H1128V558H72Z"/>
+    <path d="M72 132H1128M72 498H1128"/>
+    <path d="M132 72V132M1068 72V132M132 498V558M1068 498V558"/>
+  </g>
+  <g fill="#C8C4BA" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="18" letter-spacing="2">
+    <text x="96" y="108">[ PORTFOLIO // 2026 ]</text>
+    <text x="1104" y="108" text-anchor="end">[ ES / EN ]</text>
+    <text x="96" y="534">@DNLRSLS</text>
+    <text x="1104" y="534" text-anchor="end">DNLRSLS.GITHUB.IO/PORTAFOLIO-WEB</text>
+  </g>
+  <g fill="#FF4F97" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="24" letter-spacing="3">
+    <text x="96" y="196">+------------------------+</text>
+    <text x="96" y="224">| SELECTED WORK + SOURCE |</text>
+    <text x="96" y="252">+------------------------+</text>
+  </g>
+  <g fill="#F1EEE6" font-family="Arial, Helvetica, sans-serif" font-weight="700" letter-spacing="-2">
+    <text x="96" y="350" font-size="86">DANIEL</text>
+    <text x="96" y="436" font-size="86">ROSALES</text>
+  </g>
+  <text x="96" y="474" fill="#C8C4BA" font-family="Arial, Helvetica, sans-serif" font-size="31" letter-spacing="0">Freelance Product Engineer &amp; Open-Source Contributor</text>
+  <g fill="#FF63C2" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="26">
+    <text x="1000" y="215">[::]</text>
+    <text x="1030" y="245">[::]</text>
+    <text x="1000" y="275">[::]</text>
+    <text x="1030" y="305">[::]</text>
+    <text x="1000" y="335">[::]</text>
+    <text x="1030" y="365">[::]</text>
+    <text x="1000" y="395">[::]</text>
+  </g>
+</svg>

@@ -14,6 +14,9 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefin
 const base = import.meta.env.BASE_URL;
 const assetPath = (path: string) => `${base.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
 const portraitUrl = Astro.site ? new URL(assetPath('images/daniel-avatar.png'), Astro.site) : undefined;
+const socialCardUrl = Astro.site ? new URL(assetPath('images/social-card.png'), Astro.site) : undefined;
+const sitemapUrl = Astro.site ? new URL(assetPath('sitemap-index.xml'), Astro.site) : undefined;
+const socialCardAlt = 'Daniel Rosales, Freelance Product Engineer and Open-Source Contributor';
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -39,7 +42,9 @@ const personSchema = {
     <meta name="color-scheme" content="dark" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     {canonical && <link rel="canonical" href={canonical} />}
+    {sitemapUrl && <link rel="sitemap" type="application/xml" href={sitemapUrl} />}
     <link
       rel="icon"
       type="image/svg+xml"
@@ -49,16 +54,25 @@ const personSchema = {
       data-light-href={assetPath('favicon-light.svg')}
     />
     <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="Daniel" />
+    <meta property="profile:last_name" content="Rosales" />
+    <meta property="profile:username" content="dnlrsls" />
+    <meta property="og:site_name" content="Daniel Rosales Portfolio" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {canonical && <meta property="og:url" content={canonical} />}
-    {portraitUrl && <meta property="og:image" content={portraitUrl} />}
-    <meta property="og:image:alt" content="Portrait of Daniel Rosales" />
-    <meta name="twitter:card" content="summary" />
+    {socialCardUrl && <meta property="og:image" content={socialCardUrl} />}
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={socialCardAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {portraitUrl && <meta name="twitter:image" content={portraitUrl} />}
-    <meta name="twitter:image:alt" content="Portrait of Daniel Rosales" />
+    {socialCardUrl && <meta name="twitter:image" content={socialCardUrl} />}
+    <meta name="twitter:image:alt" content={socialCardAlt} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <script is:inline>
       (() => {
