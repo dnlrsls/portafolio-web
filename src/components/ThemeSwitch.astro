@@ -27,7 +27,7 @@
     const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
     const colorScheme = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
     const favicon = document.querySelector<HTMLLinkElement>('[data-theme-favicon]');
-    if (themeColor) themeColor.content = theme === 'dark' ? '#0c0c0b' : '#f4f6f8';
+    if (themeColor) themeColor.content = theme === 'dark' ? '#0c0c0b' : '#e2e6eb';
     if (colorScheme) colorScheme.content = theme;
     if (favicon) favicon.href = theme === 'dark' ? favicon.dataset.darkHref ?? favicon.href : favicon.dataset.lightHref ?? favicon.href;
   };

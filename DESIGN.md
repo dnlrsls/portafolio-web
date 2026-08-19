@@ -8,13 +8,16 @@ colors:
   secondary-text: "#C8C4BA"
   muted-text: "#AAA69D"
   rule: "#3D3C38"
-  light-canvas: "#F4F6F8"
-  light-elevated-surface: "#FFFFFF"
+  light-canvas: "#E2E6EB"
+  light-elevated-surface: "#EEF1F4"
   light-primary-text: "#121418"
   light-secondary-text: "#343942"
-  light-muted-text: "#646B76"
-  light-rule: "#C8CDD4"
-  light-flow: "#2F343D"
+  light-muted-text: "#59616D"
+  light-rule: "#75818E"
+  light-rule-strong: "#585F6A"
+  light-flow-primary: "#252A31"
+  light-flow-secondary: "#343B45"
+  light-flow-structural: "#59616D"
 typography:
   display:
     fontFamily: "Doto Variable, sans-serif"
@@ -152,13 +155,14 @@ monochrome roles, type, spacing, and structure rather than hue.
 
 ### Light
 
-- **Canvas `#F4F6F8`:** cold-neutral daylight field, never beige.
-- **Elevated surface `#FFFFFF`:** quiet row and interactive separation.
+- **Canvas `#E2E6EB`:** fully opaque mineral-cool daylight field that reduces glare without merging into the global ASCII field.
+- **Elevated surface `#EEF1F4`:** quiet row and interactive separation.
 - **Primary text `#121418`:** headings, actions, and factual evidence.
 - **Secondary text `#343942`:** identity, selection, and supporting emphasis.
-- **Muted text `#646B76`:** prose, metadata, and focus outlines.
-- **Rule `#C8CDD4`:** structural frames, rails, and separators.
-- **Moving characters `#2F343D`:** stable background glyph anchor at restrained opacity.
+- **Muted text `#59616D`:** prose, metadata, and focus outlines.
+- **Rule `#75818E`:** visible structural frames, rails, and separators.
+- **Strong rule `#585F6A`:** portrait depth and stronger structural separation.
+- **Moving characters `#252A31`, `#343B45`, and `#59616D`:** primary, secondary, and structural glyph roles remain distinct at restrained opacity.
 
 ## Typography
 

@@ -27,20 +27,20 @@
 
 html[data-theme='light'] {
   color-scheme: light;
-  --canvas: #f4f6f8;
-  --surface-raised: #ffffff;
+  --canvas: #e2e6eb;
+  --surface-raised: #eef1f4;
   --text-primary: #121418;
   --text-secondary: #343942;
-  --text-muted: #646b76;
+  --text-muted: #59616d;
   --identity: #343942;
-  --motion: #646b76;
+  --motion: #59616d;
   --action: #121418;
   --action-hover: #343942;
-  --rule: #b9bec7;
+  --rule: #75818e;
   --rule-strong: #585f6a;
-  --flow-primary: #2f343d;
-  --flow-secondary: #343942;
-  --flow-structural: #646b76;
+  --flow-primary: #252a31;
+  --flow-secondary: #343b45;
+  --flow-structural: #59616d;
   --portrait-primary: #121418;
   --portrait-secondary: #2e333c;
   --portrait-depth: #585f6a;
