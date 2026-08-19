@@ -1,0 +1,70 @@
+<button class="theme-switch" type="button" data-theme-switch aria-label="Cambiar al tema claro">
+  <span class="theme-switch__label--dark" aria-hidden="true">[DARK]</span>
+  <span class="theme-switch__label--light" aria-hidden="true">[LIGHT]</span>
+</button>
+
+<script>
+  type Theme = 'dark' | 'light';
+
+  const themeButton = document.querySelector<HTMLButtonElement>('[data-theme-switch]');
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const themeKey = 'portfolio-theme';
+  let transitionTimer = 0;
+
+  const readSavedTheme = (): Theme | null => {
+    try {
+      const saved = localStorage.getItem(themeKey);
+      return saved === 'dark' || saved === 'light' ? saved : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const currentTheme = (): Theme => document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+
+  const updateThemeMetadata = (theme: Theme) => {
+    const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+    const colorScheme = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
+    const favicon = document.querySelector<HTMLLinkElement>('[data-theme-favicon]');
+    if (themeColor) themeColor.content = theme === 'dark' ? '#0c0c0b' : '#f4f6f8';
+    if (colorScheme) colorScheme.content = theme;
+    if (favicon) favicon.href = theme === 'dark' ? favicon.dataset.darkHref ?? favicon.href : favicon.dataset.lightHref ?? favicon.href;
+  };
+
+  const updateAccessibleLabel = () => {
+    if (!themeButton) return;
+    const nextTheme = currentTheme() === 'dark' ? 'light' : 'dark';
+    const spanish = document.documentElement.lang === 'es';
+    themeButton.setAttribute('aria-label', spanish
+      ? `Cambiar al tema ${nextTheme === 'light' ? 'claro' : 'oscuro'}`
+      : `Switch to ${nextTheme} theme`);
+  };
+
+  const applyTheme = (theme: Theme, source: 'manual' | 'system' | 'initial', transition = false) => {
+    if (transition && !reducedMotion.matches) {
+      window.clearTimeout(transitionTimer);
+      document.documentElement.classList.add('theme-transition');
+      transitionTimer = window.setTimeout(() => document.documentElement.classList.remove('theme-transition'), 220);
+    }
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    updateThemeMetadata(theme);
+    updateAccessibleLabel();
+    window.dispatchEvent(new CustomEvent('portfolio:theme-change', { detail: { theme, source } }));
+  };
+
+  applyTheme(currentTheme(), 'initial');
+
+  themeButton?.addEventListener('click', () => {
+    const theme: Theme = currentTheme() === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem(themeKey, theme); } catch {}
+    applyTheme(theme, 'manual', true);
+  });
+
+  systemTheme.addEventListener('change', (event) => {
+    if (!readSavedTheme()) applyTheme(event.matches ? 'dark' : 'light', 'system');
+  });
+
+  window.addEventListener('portfolio:language-change', updateAccessibleLabel);
+</script>

@@ -1,0 +1,45 @@
+---
+interface Props {
+  id: string;
+  es: string;
+  en: string;
+  motif?: 'work' | 'source' | 'services' | 'contact';
+  showBanner?: boolean;
+  class?: string;
+}
+
+const {
+  id,
+  es,
+  en,
+  motif = 'work',
+  showBanner = true,
+  class: className = '',
+} = Astro.props;
+
+const patterns = {
+  work: '/ / / / ',
+  source: '#..#..',
+  services: '::..//',
+  contact: '\\ / . ',
+};
+
+const makeBanner = (label: string, width: number) => {
+  const marker = `[ ${label.toUpperCase()} ]`;
+  const topFill = '-'.repeat(Math.max(2, width - marker.length - 4));
+  const patternWidth = width - 4;
+  const texture = patterns[motif].repeat(Math.ceil(patternWidth / patterns[motif].length)).slice(0, patternWidth);
+  return `+--${marker}${topFill}+\n| ${texture} |\n+${'-'.repeat(width - 2)}+`;
+};
+---
+
+<div class:list={['ascii-heading', `ascii-heading--${motif}`, { 'ascii-heading--without-banner': !showBanner }, className]}>
+  {showBanner && <>
+    <pre class="ascii-heading__banner ascii-heading__banner--wide" aria-hidden="true"><span data-lang-content="es">{makeBanner(es, 68)}</span><span data-lang-content="en">{makeBanner(en, 68)}</span></pre>
+    <pre class="ascii-heading__banner ascii-heading__banner--compact" aria-hidden="true"><span data-lang-content="es">{makeBanner(es, 38)}</span><span data-lang-content="en">{makeBanner(en, 38)}</span></pre>
+  </>}
+  <h2 id={id}>
+    <span data-lang-content="es">{es}</span>
+    <span data-lang-content="en">{en}</span>
+  </h2>
+</div>

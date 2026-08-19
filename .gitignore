@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.artifacts/
+.atl/
+.impeccable/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example

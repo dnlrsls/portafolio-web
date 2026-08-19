@@ -1,0 +1,109 @@
+---
+import { getCollection } from 'astro:content';
+import AsciiHeading from '../components/AsciiHeading.astro';
+ import AsciiPortrait from '../components/AsciiPortrait.astro';
+import AsciiWordmark from '../components/AsciiWordmark.astro';
+import ShowcaseAsciiArt from '../components/ShowcaseAsciiArt.astro';
+import LanguageSwitch from '../components/LanguageSwitch.astro';
+import ThemeSwitch from '../components/ThemeSwitch.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const projectSubjects: Record<string, 'grupo-amsa' | 'jireh-vyp'> = {
+  'grupo-amsa': 'grupo-amsa',
+  'jireh-vyp': 'jireh-vyp',
+};
+const heroSideRail = Array.from({ length: 72 }, () => '|').join('\n');
+const workSideRail = Array.from({ length: 96 }, () => '|').join('\n');
+const continuousDashRail = '-'.repeat(256);
+---
+
+<BaseLayout title="Daniel Rosales — Product Engineer & Open-Source Contributor" description="Portfolio of Daniel Rosales: freelance product engineering, selected client work, and open-source tools.">
+  <a class="skip-link" href="#main-content"><span data-lang-content="es">Saltar al contenido</span><span data-lang-content="en">Skip to content</span></a>
+
+  <header class="site-header">
+    <a class="site-mark" href="#top"><span aria-hidden="true">[@dnlrsls]</span><span class="sr-only" data-lang-content="es">Daniel Rosales, volver al inicio</span><span class="sr-only" data-lang-content="en">Daniel Rosales, back to the top</span></a>
+    <nav aria-label="Navegación principal / Main navigation">
+      <a href="#work"><span aria-hidden="true">[ </span><span data-lang-content="es">TRABAJO</span><span data-lang-content="en">WORK</span><span aria-hidden="true"> ]</span></a>
+      <a href="#open-source"><span aria-hidden="true">[ </span>OPEN SOURCE<span aria-hidden="true"> ]</span></a>
+      <a href="#services"><span aria-hidden="true">[ </span><span data-lang-content="es">SERVICIOS</span><span data-lang-content="en">SERVICES</span><span aria-hidden="true"> ]</span></a>
+      <a href="#contact"><span aria-hidden="true">[ </span><span data-lang-content="es">CONTACTO</span><span data-lang-content="en">CONTACT</span><span aria-hidden="true"> ]</span></a>
+    </nav>
+    <div class="site-preferences"><ThemeSwitch /><LanguageSwitch /></div>
+    <pre class="site-header__rail" aria-hidden="true"><span class="site-header__rail-prefix">+--------+----------------------+----------------------+--------+</span><span class="ascii-dash-run">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></pre>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-frame">
+        <div class="hero-frame__edge hero-frame__edge--top" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>
+        <pre class="hero-frame__side hero-frame__side--start" aria-hidden="true">{heroSideRail}</pre>
+        <div class="hero-frame__interior">
+          <div class="hero__copy">
+            <AsciiWordmark />
+            <p class="role">Freelance Product Engineer <span aria-hidden="true">&</span><span class="sr-only">and</span> Open-Source Contributor</p>
+            <p class="hero__intro"><span data-lang-content="es">Diseño y construyo productos web claros. Mi trabajo público muestra cómo pienso, colaboro y entrego.</span><span data-lang-content="en">I design and build clear web products. My public work shows how I think, collaborate, and deliver.</span></p>
+            <div class="hero__actions">
+              <a class="hero-link" href="#work"><span aria-hidden="true">[&gt; </span><span data-lang-content="es">EXPLORAR TRABAJO</span><span data-lang-content="en">EXPLORE WORK</span><span aria-hidden="true">]</span></a>
+              <a class="hero-link hero-link--secondary" href="mailto:danelcan14@gmail.com"><span aria-hidden="true">[</span><span data-lang-content="es">INICIAR CONVERSACIÓN</span><span data-lang-content="en">START A CONVERSATION</span><span aria-hidden="true"> -&gt;]</span></a>
+            </div>
+          </div>
+          <div class="hero__portrait"><AsciiPortrait /></div>
+        </div>
+        <pre class="hero-frame__side hero-frame__side--end" aria-hidden="true">{heroSideRail}</pre>
+        <div class="hero-frame__edge hero-frame__edge--bottom" aria-hidden="true"><span>+</span><span class="ascii-dash-run">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>
+      </div>
+    </section>
+
+    <section class="showcase-stage work" id="work" aria-labelledby="work-title">
+      <div class="showcase-frame work-frame">
+        <div class="showcase-frame__edge work-frame__edge work-frame__edge--top" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>
+        <pre class="showcase-frame__side work-frame__side work-frame__side--start" aria-hidden="true">{workSideRail}</pre>
+        <div class="showcase-header work-intro"><AsciiHeading id="work-title" es="Trabajo seleccionado" en="Selected work" motif="work" /><p><span data-lang-content="es">Proyectos corporativos públicos, descritos por el alcance realmente entregado.</span><span data-lang-content="en">Public corporate projects, described by the scope actually delivered.</span></p></div>
+        <div class="showcase-frame__junction work-frame__junction" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run work-frame__rail--before">{continuousDashRail}</span><span class="ascii-rail-corner work-frame__center-corner">+</span><span class="ascii-dash-run work-frame__rail--after">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>
+        <div class="showcase-ledger project-ledger">
+          <pre class="showcase-frame__divider work-frame__divider" aria-hidden="true">{workSideRail}</pre>
+          {projects.map((project, index) => (
+            <article id={`project-${project.id}`} class:list={['project-record', `project-record--${index + 1}`]}>
+              {index > 0 && <div class="showcase-frame__mobile-divider work-frame__mobile-divider" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>}
+                <div class="showcase-record__grid">
+                  <div class="showcase-record__body"><h3>{project.data.client}</h3><p class="showcase-record__category"><span data-lang-content="es">{project.data.service.es}</span><span data-lang-content="en">{project.data.service.en}</span></p><p class="showcase-record__summary"><span data-lang-content="es">{project.data.summary.es}</span><span data-lang-content="en">{project.data.summary.en}</span></p></div>
+                  <ShowcaseAsciiArt subject={projectSubjects[project.id]} />
+                <a class="project-record__link external-action" href={project.data.url} target="_blank" rel="noopener noreferrer"><span class="external-action__label"><span aria-hidden="true">[&gt; </span><span data-lang-content="es">VISITAR SITIO DE {project.data.client}</span><span data-lang-content="en">VISIT {project.data.client} WEBSITE</span><span aria-hidden="true"> ]</span></span><span class="external-action__run" aria-hidden="true">{continuousDashRail}</span><span class="ascii-arrow" aria-hidden="true">-&gt;</span></a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <pre class="showcase-frame__side work-frame__side work-frame__side--end" aria-hidden="true">{workSideRail}</pre>
+        <div class="showcase-frame__edge work-frame__edge work-frame__edge--bottom" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run work-frame__rail--before">{continuousDashRail}</span><span class="ascii-rail-corner work-frame__center-corner">+</span><span class="ascii-dash-run work-frame__rail--after">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>
+      </div>
+    </section>
+
+    <section class="showcase-stage open-source" id="open-source" aria-labelledby="oss-title">
+      <div class="showcase-frame oss-frame">
+        <div class="showcase-frame__edge oss-frame__edge oss-frame__edge--top" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>
+        <pre class="showcase-frame__side oss-frame__side oss-frame__side--start" aria-hidden="true">{workSideRail}</pre>
+        <div class="showcase-header oss-header"><AsciiHeading id="oss-title" es="Open source, en público" en="Open source, in public" motif="source" /><p><span data-lang-content="es">Dos herramientas abiertas que aportan estructura, memoria y límites claros al trabajo con agentes de código.</span><span data-lang-content="en">Two open tools that bring structure, memory, and clear boundaries to work with coding agents.</span></p></div>
+        <div class="showcase-frame__junction oss-frame__junction" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run oss-frame__rail--before">{continuousDashRail}</span><span class="ascii-rail-corner oss-frame__center-corner">+</span><span class="ascii-dash-run oss-frame__rail--after">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>
+        <div class="showcase-ledger oss-tool-grid">
+          <pre class="showcase-frame__divider oss-frame__divider" aria-hidden="true">{workSideRail}</pre>
+          <article class="repo-block repo-block--gentle"><div class="showcase-record__grid"><div class="showcase-record__body"><h3>GENTLE AI</h3><p class="showcase-record__category"><span data-lang-content="es">Flujos de desarrollo asistido por IA</span><span data-lang-content="en">AI-assisted development workflows</span></p><p class="showcase-record__summary"><span data-lang-content="es">Un ecosistema que equipa agentes de código existentes con memoria, habilidades, flujos de trabajo e integraciones.</span><span data-lang-content="en">An ecosystem that equips existing coding agents with memory, skills, workflows, and integrations.</span></p></div><ShowcaseAsciiArt subject="gentle-ai" /><a class="repo-block__link external-action" href="https://github.com/Gentleman-Programming/gentle-ai" target="_blank" rel="noopener noreferrer"><span class="external-action__label"><span aria-hidden="true">[&gt; </span><span data-lang-content="es">ABRIR REPOSITORIO GENTLE AI</span><span data-lang-content="en">OPEN GENTLE AI REPOSITORY</span><span aria-hidden="true"> ]</span></span><span class="external-action__run" aria-hidden="true">{continuousDashRail}</span><span class="ascii-arrow" aria-hidden="true">-&gt;</span></a></div></article>
+          <article class="repo-block repo-block--engram"><div class="showcase-frame__mobile-divider oss-frame__mobile-divider" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div><div class="showcase-record__grid"><div class="showcase-record__body"><h3>ENGRAM</h3><p class="showcase-record__category"><span data-lang-content="es">Memoria persistente para agentes de código</span><span data-lang-content="en">Persistent memory for coding agents</span></p><p class="showcase-record__summary"><span data-lang-content="es">Un sistema agnóstico que conserva y recupera contexto entre sesiones mediante un único binario con almacenamiento local.</span><span data-lang-content="en">An agent-agnostic system that preserves and retrieves context across sessions through a single binary with local storage.</span></p></div><ShowcaseAsciiArt subject="engram" /><a class="repo-block__link external-action" href="https://github.com/Gentleman-Programming/engram" target="_blank" rel="noopener noreferrer"><span class="external-action__label"><span aria-hidden="true">[&gt; </span><span data-lang-content="es">ABRIR REPOSITORIO ENGRAM</span><span data-lang-content="en">OPEN ENGRAM REPOSITORY</span><span aria-hidden="true"> ]</span></span><span class="external-action__run" aria-hidden="true">{continuousDashRail}</span><span class="ascii-arrow" aria-hidden="true">-&gt;</span></a></div></article>
+        </div>
+        <pre class="showcase-frame__side oss-frame__side oss-frame__side--end" aria-hidden="true">{workSideRail}</pre>
+        <div class="showcase-frame__edge oss-frame__edge oss-frame__edge--bottom" aria-hidden="true"><span class="ascii-rail-corner">+</span><span class="ascii-dash-run">{continuousDashRail}</span><span class="ascii-rail-corner">+</span></div>
+      </div>
+    </section>
+
+    <section class="services section-shell" id="services" aria-labelledby="services-title"><div class="services__lead"><AsciiHeading id="services-title" es="Cómo puedo ayudar" en="How I can help" motif="services" showBanner={false} /><p><span data-lang-content="es">Trabajo con equipos y negocios que necesitan convertir una necesidad real en una experiencia web clara, implementada y publicada.</span><span data-lang-content="en">I work with teams and businesses that need to turn a real need into a clear, implemented, and released web experience.</span></p></div><ol class="service-manifest"><li><span class="service-manifest__node" aria-hidden="true">+--/</span><h3><span data-lang-content="es">Diseño de producto web</span><span data-lang-content="en">Web product design</span></h3><p><span data-lang-content="es">Estructura, interfaz y decisiones visuales guiadas por el objetivo del producto.</span><span data-lang-content="en">Structure, interface, and visual decisions guided by the product goal.</span></p></li><li><span class="service-manifest__node" aria-hidden="true">+--#</span><h3><span data-lang-content="es">Implementación frontend</span><span data-lang-content="en">Frontend implementation</span></h3><p><span data-lang-content="es">Experiencias responsive, accesibles y mantenibles construidas para producción.</span><span data-lang-content="en">Responsive, accessible, maintainable experiences built for production.</span></p></li><li><span class="service-manifest__node" aria-hidden="true">+--&gt;</span><h3><span data-lang-content="es">Entrega y lanzamiento</span><span data-lang-content="en">Delivery and launch</span></h3><p><span data-lang-content="es">Preparación técnica, despliegue y acompañamiento hasta que el trabajo esté público.</span><span data-lang-content="en">Technical preparation, deployment, and support until the work is public.</span></p></li></ol></section>
+    <section class="contact" id="contact" aria-labelledby="contact-title"><AsciiHeading id="contact-title" es="Hablemos de lo que sigue" en="Let's discuss what's next" motif="contact" showBanner={false} /><p><span data-lang-content="es">Cuéntame qué necesitas construir, mejorar o lanzar.</span><span data-lang-content="en">Tell me what you need to build, improve, or launch.</span></p><a class="contact__email" href="mailto:danelcan14@gmail.com"><span aria-hidden="true">[</span>danelcan14@gmail.com<span aria-hidden="true">-&gt;]</span></a><div class="contact__links"><a href="https://www.linkedin.com/in/daniel-rosales00/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[ </span><span data-lang-content="es">PERFIL EN LINKEDIN</span><span data-lang-content="en">LINKEDIN PROFILE</span><span aria-hidden="true"> -&gt; ]</span></a><a href="https://github.com/dnlrsls" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">[ </span><span data-lang-content="es">PERFIL EN GITHUB</span><span data-lang-content="en">GITHUB PROFILE</span><span aria-hidden="true"> -&gt; ]</span></a></div></section>
+  </main>
+  <footer><p>+-- © 2026 DANIEL ROSALES</p><p><span data-lang-content="es">-- DISEÑADO Y CONSTRUIDO CON INTENCIÓN --</span><span data-lang-content="en">-- DESIGNED AND BUILT WITH INTENTION --</span></p><a href="#top"><span aria-hidden="true">[</span><span data-lang-content="es">VOLVER ARRIBA</span><span data-lang-content="en">BACK TO TOP</span><span aria-hidden="true"> /^]</span></a></footer>
+  <script>
+    const languageButton = document.querySelector<HTMLButtonElement>('[data-language-switch]');
+    const applyLanguage = (language: 'es' | 'en', persist = true) => { document.documentElement.lang = language; document.documentElement.dataset.lang = language; if (languageButton) languageButton.setAttribute('aria-label', language === 'es' ? 'Cambiar el idioma a inglés' : 'Switch language to Spanish'); if (persist) { try { localStorage.setItem('portfolio-language', language); } catch {} } window.dispatchEvent(new CustomEvent('portfolio:language-change', { detail: { language } })); };
+    const initialLanguage = document.documentElement.lang === 'en' ? 'en' : 'es';
+    applyLanguage(initialLanguage, false);
+    languageButton?.addEventListener('click', () => { applyLanguage(document.documentElement.lang === 'es' ? 'en' : 'es'); });
+  </script>
+</BaseLayout>

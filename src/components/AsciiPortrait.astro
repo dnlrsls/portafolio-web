@@ -1,0 +1,37 @@
+---
+const base = import.meta.env.BASE_URL;
+const assetPath = (path: string) => `${base.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
+---
+
+<figure class="wireportrait" role="img" aria-labelledby="portrait-description">
+  <span class="sr-only" id="portrait-description">
+    <span data-lang-content="es">Retrato de Daniel Rosales reconstruido con caracteres ASCII a partir de su avatar público de GitHub.</span>
+    <span data-lang-content="en">Portrait of Daniel Rosales reconstructed with ASCII characters from his public GitHub avatar.</span>
+  </span>
+  <div class="wireportrait__stage">
+    <pre class="wireportrait__fallback" aria-hidden="true">              ..-==++++==-..
+          .-+*############*+-.
+        .=*##################*=.
+       -*#######**++++**#######*-
+      +######*=-::::::::-=*######+
+     +#####*-.  ..::::..  .-*#####+
+    =#####=.  .-========-.  .=#####=
+   .#####=   :+**********+:   =#####.
+   +####*.  -*############*-  .*####+
+   #####+  :######****######:  +#####
+  .#####-  +####*=::::=*####+  -#####.
+  :#####-  *###*:      :*###*  -#####:
+  .#####+  +###=  ....  =###+  +#####.
+   *#####. :###*::+**+::*###: .#####*
+   :#####+  *####*####*####*  +#####:
+    *#####= :##############: =#####*
+     *#####*.:*##########*:.+#####*
+      +######+.-+******+-.*######+
+       =#######*+======+*#######=
+        :+####################+:
+          :=*############*=: </pre>
+    <canvas class="wireportrait__canvas" data-ascii-portrait data-source={assetPath('images/daniel-avatar.png')} aria-hidden="true"></canvas>
+  </div>
+</figure>
+
+<script src="../scripts/portrait.ts"></script>

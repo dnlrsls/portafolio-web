@@ -1,0 +1,20 @@
+---
+interface Props {
+  es: string;
+  en: string;
+  end?: string;
+  class?: string;
+}
+
+const { es, en, end = '+', class: className = '' } = Astro.props;
+
+const makeRail = (label: string, width: number) => {
+  const marker = `[ ${label.toUpperCase()} ]`;
+  return `+--${marker}${'-'.repeat(Math.max(2, width - marker.length - 4))}${end}`;
+};
+---
+
+<div class:list={['ascii-rail', className]} aria-hidden="true">
+  <pre class="ascii-rail__wide"><span data-lang-content="es">{makeRail(es, 84)}</span><span data-lang-content="en">{makeRail(en, 84)}</span></pre>
+  <pre class="ascii-rail__compact"><span data-lang-content="es">{makeRail(es, 38)}</span><span data-lang-content="en">{makeRail(en, 38)}</span></pre>
+</div>

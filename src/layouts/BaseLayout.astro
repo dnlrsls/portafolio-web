@@ -1,0 +1,103 @@
+---
+import '@fontsource-variable/doto';
+import '@fontsource/fragment-mono/400.css';
+import AsciiFlowField from '../components/AsciiFlowField.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const base = import.meta.env.BASE_URL;
+const assetPath = (path: string) => `${base.replace(/\/+$/, '')}/${path.replace(/^\/+/, '')}`;
+const portraitUrl = Astro.site ? new URL(assetPath('images/daniel-avatar.png'), Astro.site) : undefined;
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Daniel Rosales',
+  alternateName: '@dnlrsls',
+  jobTitle: 'Freelance Product Engineer & Open-Source Contributor',
+  email: 'mailto:danelcan14@gmail.com',
+  url: canonical?.href,
+  image: portraitUrl?.href,
+  sameAs: [
+    'https://github.com/dnlrsls',
+    'https://www.linkedin.com/in/daniel-rosales00/',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c0c0b" />
+    <meta name="color-scheme" content="dark" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={assetPath('favicon.svg')}
+      data-theme-favicon
+      data-dark-href={assetPath('favicon.svg')}
+      data-light-href={assetPath('favicon-light.svg')}
+    />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {portraitUrl && <meta property="og:image" content={portraitUrl} />}
+    <meta property="og:image:alt" content="Portrait of Daniel Rosales" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {portraitUrl && <meta name="twitter:image" content={portraitUrl} />}
+    <meta name="twitter:image:alt" content="Portrait of Daniel Rosales" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script is:inline>
+      (() => {
+        document.documentElement.classList.remove('no-js');
+        const themeKey = 'portfolio-theme';
+        let savedTheme;
+        try { savedTheme = localStorage.getItem(themeKey); } catch {}
+        const systemTheme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : systemTheme;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        const colorScheme = document.querySelector('meta[name="color-scheme"]');
+        const favicon = document.querySelector('[data-theme-favicon]');
+        if (themeColor) themeColor.content = theme === 'dark' ? '#0c0c0b' : '#f4f6f8';
+        if (colorScheme) colorScheme.content = theme;
+        if (favicon) favicon.href = theme === 'dark' ? favicon.dataset.darkHref : favicon.dataset.lightHref;
+
+        let saved;
+        try { saved = localStorage.getItem('portfolio-language'); } catch {}
+        const browserLanguage = navigator.languages?.[0] ?? navigator.language;
+        const preferred = browserLanguage.toLowerCase().startsWith('es') ? 'es' : 'en';
+        const language = saved === 'es' || saved === 'en' ? saved : preferred;
+        document.documentElement.lang = language;
+        document.documentElement.dataset.lang = language;
+      })();
+    </script>
+  </head>
+  <body>
+    <!--
+    THESIS: An ASCII-native editorial portfolio makes Daniel's inspectable work the visual material and refuses generic developer cards.
+    OWN-WORLD: Adaptive mineral-dark and cold-neutral-light canvases, restrained semantic grays, real glyph-built rails and frames, Doto display type, and generous space.
+    STORY: Explore Daniel's selected client work, continue into open-source tools, then open a direct conversation.
+    FIRST VIEWPORT: A readable Doto name, direct actions, and portrait share one ASCII frame.
+    FORM: Dual-theme monochrome ASCII folio with one viewport-fixed character field behind explicit foreground content, one unified hero frame, shared work and tool frames, and a static theme-aware character portrait.
+    SEED: The public GitHub-avatar-derived ASCII portrait remains the signature visual asset.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+    -->
+    <AsciiFlowField />
+    <slot />
+  </body>
+</html>
