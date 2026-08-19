@@ -28,7 +28,8 @@ if (canvas) {
       };
       const glyphRamp = ' .:-=+*#%@';
       context.clearRect(0, 0, displayWidth, displayHeight);
-      context.font = '11px "Fragment Mono", monospace';
+      const fontWeight = styles.getPropertyValue('--portrait-weight').trim() || '400';
+      context.font = `${fontWeight} 11px "Fragment Mono", monospace`;
       context.textBaseline = 'top';
 
       for (let y = 0; y < rows; y += 1) {

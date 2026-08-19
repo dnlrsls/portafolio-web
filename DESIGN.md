@@ -15,6 +15,9 @@ colors:
   light-muted-text: "#59616D"
   light-rule: "#75818E"
   light-rule-strong: "#585F6A"
+  light-portrait-primary: "#0B0D10"
+  light-portrait-secondary: "#23272E"
+  light-portrait-depth: "#404752"
   light-flow-primary: "#252A31"
   light-flow-secondary: "#343B45"
   light-flow-structural: "#59616D"
@@ -168,7 +171,8 @@ rather than hue.
 - **Secondary text `#343942`:** identity, selection, and supporting emphasis.
 - **Muted text `#59616D`:** prose, metadata, and focus outlines.
 - **Rule `#75818E`:** visible structural frames, rails, and separators.
-- **Strong rule `#585F6A`:** portrait depth and stronger structural separation.
+- **Strong rule `#585F6A`:** stronger structural separation.
+- **Portrait `#0B0D10`, `#23272E`, and `#404752`:** high-contrast primary, secondary, and depth marks for the small antialiased portrait glyphs.
 - **Moving characters `#252A31`, `#343B45`, and `#59616D`:** primary, secondary, and structural glyph roles remain distinct at restrained opacity.
 - **Gentle AI art `#A31359`:** deeper rose-magenta used only for its source-derived rose ASCII figure.
 - **Engram art `#8D1A63`:** brighter electric pink used only for its source-derived elephant ASCII figure.
@@ -228,6 +232,8 @@ The corrected GitHub-avatar-derived portrait uses sparse-to-dense luminance mapp
 a centered vignette, background suppression, and the correct 10×14 character-cell
 aspect ratio so the face and hair remain recognizable. It is a static light-on-dark or
 dark-on-light neutral rendering on a transparent stage with no rectangle or animation loop.
+Night mode keeps Fragment Mono at weight 400; day mode uses weight 600 and a dedicated
+high-contrast neutral palette so the reduced glyph strokes remain legible over the global field.
 
 The Gentle AI and Engram tool artworks are static ASCII strings deterministically derived
 from supplied source PNGs, never hand-authored. Both tools share the exact same deterministic

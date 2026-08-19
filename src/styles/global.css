@@ -17,6 +17,7 @@
   --portrait-primary: #f1eee6;
   --portrait-secondary: #aaa69d;
   --portrait-depth: #5f5d58;
+  --portrait-weight: 400;
   --tool-gentle-ai: #ff4f97;
   --tool-engram: #ff63c2;
   --site-header-height: 76px;
@@ -43,9 +44,10 @@ html[data-theme='light'] {
   --flow-primary: #252a31;
   --flow-secondary: #343b45;
   --flow-structural: #59616d;
-  --portrait-primary: #121418;
-  --portrait-secondary: #2e333c;
-  --portrait-depth: #585f6a;
+  --portrait-primary: #0b0d10;
+  --portrait-secondary: #23272e;
+  --portrait-depth: #404752;
+  --portrait-weight: 600;
   --tool-gentle-ai: #97004c;
   --tool-engram: #850060;
 }
@@ -504,8 +506,13 @@ footer {
   overflow: hidden;
   color: var(--identity);
   font: clamp(6px, 0.75vw, 11px)/1.18 var(--mono);
+  font-weight: var(--portrait-weight);
   text-align: center;
   transition: opacity 180ms ease;
+}
+
+html[data-theme='light'] .wireportrait__fallback {
+  color: var(--portrait-primary);
 }
 
 .wireportrait__canvas {
