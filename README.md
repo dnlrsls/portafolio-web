@@ -30,6 +30,10 @@ pnpm check
 pnpm build
 ```
 
+## Contribution policy
+
+This is a personal portfolio. Non-owner issues and pull requests are automatically closed.
+
 ## Deployment configuration
 
 The published site is [https://dnlrsls.github.io/portafolio-web/](https://dnlrsls.github.io/portafolio-web/).

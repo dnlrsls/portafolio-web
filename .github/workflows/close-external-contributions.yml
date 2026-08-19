@@ -1,0 +1,64 @@
+name: Close external contributions
+
+on:
+  issues:
+    types: [opened, reopened]
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  close-external-issue:
+    if: github.event_name == 'issues' && github.event.issue.user.login != github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment and close issue
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issueNumber = context.issue.number;
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: issueNumber,
+              body: 'Thank you for reaching out. This is a personal portfolio, so public issues are not accepted.'
+            });
+
+            await github.rest.issues.update({
+              owner,
+              repo,
+              issue_number: issueNumber,
+              state: 'closed',
+              state_reason: 'not_planned'
+            });
+
+  close-external-pull-request:
+    if: github.event_name == 'pull_request_target' && github.event.pull_request.user.login != github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment and close pull request
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pullNumber = context.issue.number;
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: pullNumber,
+              body: 'Thank you for your interest. This is a personal portfolio, so public code contributions are not accepted.'
+            });
+
+            await github.rest.pulls.update({
+              owner,
+              repo,
+              pull_number: pullNumber,
+              state: 'closed'
+            });
